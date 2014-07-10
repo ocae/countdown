@@ -20,7 +20,7 @@ import java.util.List;
 public class SgvAnimationHelper {
 
     /**
-     * Supported entrance animations for views in the {@link StaggeredGridView}.
+     * Supported entrance animations for views in the {@link com.android.deskclock.widget.sgv.StaggeredGridView}.
      */
     public enum AnimationIn {
         NONE,
@@ -44,7 +44,7 @@ public class SgvAnimationHelper {
     }
 
     /**
-     * Supported exit animations for views in the {@link StaggeredGridView}.
+     * Supported exit animations for views in the {@link com.android.deskclock.widget.sgv.StaggeredGridView}.
      */
     public enum AnimationOut {
         NONE,

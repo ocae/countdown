@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import com.android.deskclock.widget.sgv.ReorderUtils;
 
 /**
- * Adapter for use with {@link StaggeredGridView}. Copied from Keep.
+ * Adapter for use with {@link com.android.deskclock.widget.sgv.StaggeredGridView}. Copied from Keep.
  * TODO: Keep up to date with fixes to their code; if they move into a shared library, use that.
  */
 public abstract class GridAdapter extends BaseAdapter {
@@ -47,7 +47,7 @@ public abstract class GridAdapter extends BaseAdapter {
      * edge of the grid to re-order.
      * @return int The re-ordering area for the view at this adapter position.
      * Possible return values are a combination of
-     * {@link ReorderUtils#REORDER_AREA_NONE}, {@link ReorderUtils#REORDER_AREA_VALID}
+     * {@link com.android.deskclock.widget.sgv.ReorderUtils#REORDER_AREA_NONE}, {@link com.android.deskclock.widget.sgv.ReorderUtils#REORDER_AREA_VALID}
      */
     public int getReorderingArea(int position, boolean isLastColumnInGrid) {
         return ReorderUtils.REORDER_AREA_NONE;
@@ -57,8 +57,8 @@ public abstract class GridAdapter extends BaseAdapter {
      * The direction for drag to reorder that is allowed.  By default, the allowed direction
      * is free across both horizontal and vertical axes.
      * @return int The allowed direction for drag to reorder.  Possible return values are a
-     * combination of {@link ReorderUtils#REORDER_DIRECTION_VERTICAL} and/or
-     * {@link ReorderUtils#REORDER_DIRECTION_HORIZONTAL}
+     * combination of {@link com.android.deskclock.widget.sgv.ReorderUtils#REORDER_DIRECTION_VERTICAL} and/or
+     * {@link com.android.deskclock.widget.sgv.ReorderUtils#REORDER_DIRECTION_HORIZONTAL}
      */
     public int getReorderingDirection() {
         return ReorderUtils.REORDER_DIRECTION_VERTICAL | ReorderUtils.REORDER_DIRECTION_HORIZONTAL;
