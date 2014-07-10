@@ -28,6 +28,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.android.deskclock.DeskClock;
+
+import org.ocae.android.countdown.CountDownActivity;
 import org.ocae.android.countdown.R;
 import com.android.deskclock.TimerRingService;
 import com.android.deskclock.Utils;
@@ -295,7 +297,7 @@ public class TimerReceiver extends BroadcastReceiver {
 
     private void showCollapsedNotificationWithNext(
             final Context context, String title, String text, Long nextBroadcastTime) {
-        Intent activityIntent = new Intent(context, DeskClock.class);
+        Intent activityIntent = new Intent(context, CountDownActivity.class);
         activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activityIntent.putExtra(DeskClock.SELECT_TAB_INTENT_EXTRA, DeskClock.TIMER_TAB_INDEX);
         PendingIntent pendingActivityIntent = PendingIntent.getActivity(context, 0, activityIntent,

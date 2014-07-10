@@ -164,7 +164,7 @@ public class LabelDialogFragment extends DialogFragment {
         void onDialogLabelSet(Alarm alarm, String label, String tag);
     }
 
-    interface TimerLabelDialogHandler {
+    public interface TimerLabelDialogHandler {
         void onDialogLabelSet(TimerObj timer, String label, String tag);
     }
 }

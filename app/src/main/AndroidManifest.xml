@@ -6,16 +6,53 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo">
+        android:theme="@android:style/Theme.Holo"
+        android:launchMode="singleTask">
+
         <activity
             android:name=".CountDownActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- This activity is basically like the TimerFragment in DeskClock
+         but only during lock screen
+         so that is only has the fired timers -->
+        <activity android:name="com.android.deskclock.timer.TimerAlertFullScreen"
+            android:excludeFromRecents="true"
+            android:theme="@style/AlarmAlertFullScreenTheme"
+            android:launchMode="singleInstance"
+            android:showOnLockScreen="true"
+            android:taskAffinity=""
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation" />
+
+        <service android:name="com.android.deskclock.TimerRingService"
+            android:exported="false"
+            android:description="@string/timer_ring_service_desc">
+            <intent-filter>
+                <action android:name="com.android.deskclock.TIMER_ALERT" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.android.deskclock.timer.TimerReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="start_timer" />
+                <action android:name="delete_timer" />
+                <action android:name="times_up" />
+                <action android:name="timer_stop" />
+                <action android:name="timer_reset" />
+                <action android:name="timer_done" />
+                <action android:name="timer_update" />
+                <action android:name="notif_in_use_show" />
+                <action android:name="notif_in_use_cancel" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
