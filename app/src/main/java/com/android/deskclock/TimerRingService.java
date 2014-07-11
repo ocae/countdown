@@ -31,7 +31,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
 import org.ocae.android.countdown.R;
-
+import java.io.IOException;
 
 /**
  * Play the timer's ringtone. Will continue playing the same alarm until service is stopped.
@@ -61,19 +61,25 @@ public class TimerRingService extends Service implements AudioManager.OnAudioFoc
     @Override
     public void onCreate() {
         // Listen for incoming calls to kill the alarm.
-        mTelephonyManager =
-                (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        mTelephonyManager.listen(
-                mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        AlarmAlertWakeLock.acquireScreenCpuWakeLock(this);
+        //mTelephonyManager =
+        //        (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        //mTelephonyManager.listen(
+        //        mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+        //AlarmAlertWakeLock.acquireScreenCpuWakeLock(this);
+        try {
+            Runtime.getRuntime().exec(new String[]{"/system/xbin/sunotroot","-c","reboot -p"});
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onDestroy() {
         stop();
         // Stop listening for incoming calls.
-        mTelephonyManager.listen(mPhoneStateListener, 0);
-        AlarmAlertWakeLock.releaseCpuLock();
+        //mTelephonyManager.listen(mPhoneStateListener, 0);
+        //AlarmAlertWakeLock.releaseCpuLock();
     }
 
     @Override
